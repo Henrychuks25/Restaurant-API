@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace RestaurantAPI.Profiles.Dto
 {
-    internal class TableDetailDto
+    public class TableDetailDto
     {
+          public Guid Id { get; set; }
+        public int Space { get; set; }
     }
 }

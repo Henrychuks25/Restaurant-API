@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace RestaurantAPI.Profiles.Dto
 {
-    internal class ResMenuDto
+    public class ResMenuDto
     {
+          public Guid Id { get; set; }
+        public string? Name { get; set; }
+        public decimal Price { get; set; }
     }
 }

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace RestaurantAPI.Profiles.Dto
 {
-    internal class SellDetailDto
+    public class SellDetailDto
     {
+         public DateTime? SDate { get; set; }
+        public decimal? Total { get; set; }
     }
 }
