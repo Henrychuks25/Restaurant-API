@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using RestaurantAPI.Entities.Models;
+using RestaurantAPI.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.ConfigureCors();
+builder.Services.ConfigureIISintegration();
+builder.Services.ConfigureRepositoryManager();
+builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -17,6 +24,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
 

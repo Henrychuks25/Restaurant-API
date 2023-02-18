@@ -8,6 +8,7 @@ namespace RestaurantAPI.Entities.Models
         public int Quantity { get; set; }
         public Guid OId { get; set; }
         public Guid FId { get; set; }
+        public string? ImageUrl { get; set; }
 
         public virtual Food FIdNavigation { get; set; } = null!;
         public virtual Order OIdNavigation { get; set; } = null!;

@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantAPI", "RestaurantAPI.csproj", "{E9ED3B2C-BBD5-49F0-B7E7-B695F5363E4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantAPI", "RestaurantAPI.csproj", "{E9ED3B2C-BBD5-49F0-B7E7-B695F5363E4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantAPI.Entities", "..\RestaurantAPI.Entities\RestaurantAPI.Entities.csproj", "{59D7C4A5-693B-45E5-B66B-1EE50410DB83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantAPI.Entities", "..\RestaurantAPI.Entities\RestaurantAPI.Entities.csproj", "{59D7C4A5-693B-45E5-B66B-1EE50410DB83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantAPI.Repository", "..\RestaurantAPI.Repository\RestaurantAPI.Repository.csproj", "{D493E7A1-09A8-47F3-B8A8-E8C7595EFF3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantAPI.Repository", "..\RestaurantAPI.Repository\RestaurantAPI.Repository.csproj", "{D493E7A1-09A8-47F3-B8A8-E8C7595EFF3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantAPI.Profiles", "..\RestaurantAPI.Profiles\RestaurantAPI.Profiles.csproj", "{8437C699-DA1F-40D3-92C2-6C2999DF78AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{D493E7A1-09A8-47F3-B8A8-E8C7595EFF3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D493E7A1-09A8-47F3-B8A8-E8C7595EFF3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D493E7A1-09A8-47F3-B8A8-E8C7595EFF3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8437C699-DA1F-40D3-92C2-6C2999DF78AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8437C699-DA1F-40D3-92C2-6C2999DF78AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8437C699-DA1F-40D3-92C2-6C2999DF78AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8437C699-DA1F-40D3-92C2-6C2999DF78AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
