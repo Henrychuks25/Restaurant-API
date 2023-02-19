@@ -8,5 +8,6 @@ namespace RestaurantAPI.Repository.Interface
 {
     public interface IRepositoryManager
     {
+
     }
 }

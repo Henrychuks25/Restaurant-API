@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RestaurantAPI.Entities\RestaurantAPI.Entities.csproj" />
+    <ProjectReference Include="..\RestaurantAPI.Profiles\RestaurantAPI.Profiles.csproj" />
   </ItemGroup>
 
 </Project>
