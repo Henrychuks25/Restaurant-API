@@ -21,7 +21,20 @@ namespace RestaurantAPI.Profiles
             CreateMap<ResMenu, ResMenuDto>().ReverseMap();
             CreateMap<SellDetail, SellDetailDto>().ReverseMap();
             CreateMap<TableDetail, TableDetailDto>().ReverseMap();
-        
+            CreateMap<CreateFoodDto, Food>()
+                        .ForMember(dest => dest.EId, opt => opt.MapFrom(src => $"{src.UserId}"))
+
+                .ReverseMap();
+
+            CreateMap<CreateJobDto, Job>()
+                        //.ForMember(dest => dest.EId, opt => opt.MapFrom(src => $"{src.UserId}"))
+
+                .ReverseMap();
+            CreateMap<CreateEmployeeDto, Employee>()
+                        .ForMember(dest => dest.JId, opt => opt.MapFrom(src => $"{src.JId}"))
+
+                .ReverseMap();
+
         }
     }
 }

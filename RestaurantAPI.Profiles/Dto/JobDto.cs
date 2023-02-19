@@ -13,4 +13,15 @@ namespace RestaurantAPI.Profiles.Dto
         public string? Employees { get; set; }
 
     }
+    public class CreateJobDto
+    {
+        public Guid Id { get; set; }
+        public string? Title { get; set; }
+    }
+
+    public class UpdateJobDto
+    {
+        public Guid Id { get; set; }
+        public string? Title { get; set; }
+    }
 }

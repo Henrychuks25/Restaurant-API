@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RestaurantAPI.Entities.Contexts;
+using RestaurantAPI.Profiles;
 using RestaurantAPI.Repository.Interface;
 using RestaurantAPI.Repository.Service;
 
@@ -17,7 +18,12 @@ namespace RestaurantAPI.Extensions
             services.Configure<IISOptions>(options => { });
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
             services.AddScoped<IRepositoryManager, RepositoryManager>();
+            //services.AddScoped<IFoodRepo, FoodService>();
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
             services.AddDbContext<Contexts>(opts => opts.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+        public static void ConfigureAutoMapper(this IServiceCollection services) =>
+           
+            services.AddAutoMapper(typeof(MappingProfile));
     }
 }

@@ -1,3 +1,3 @@
-public interface BookingRepo{
+public interface IResMenuRepo{
     
 }

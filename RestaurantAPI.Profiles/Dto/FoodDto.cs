@@ -21,6 +21,7 @@ namespace RestaurantAPI.Profiles.Dto
     public class CreateFoodDto
     {
         public Guid FId { get; set;}
+        public Guid UserId { get; set; }
         public string? FName { get; set;} = null;
         public decimal FPrice { get; set; }
         

@@ -12,11 +12,11 @@ namespace RestaurantAPI.Repository.Interface
         Task<IEnumerable<FoodDto>> GetAllFoodAsync(bool trackChanges);
         Task<FoodDto> GetFoodAsync(Guid foodId, bool trackChanges);
         Task<FoodDto> GetFoodByNameAsync(string name, bool trackChanges);
-        void Create(CreateFoodDto food);
+        Task Create(CreateFoodDto food);
 
         Task Update(UpdateFoodDto food);
 
 
-        void Delete(FoodDto user);
+        void Delete(FoodDto food);
     }
 }

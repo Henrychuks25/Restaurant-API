@@ -8,20 +8,17 @@ namespace RestaurantAPI.Repository.Interface
 {
     public interface IRepositoryManager
     {
-<<<<<<< Updated upstream
 
-=======
-        IMenuTableRepo Menu {get; set;}
-        IOrderRepo Order {get; set;}
-        IFoodRepo Food {get; set;}
-        IEmployeeListRepo EmpList {get; set;}
-        IEmployeeRepo Employee {get; set;}
-        IMenuTableRepo EmployeeList {get; set;}
-        IBookingRepo Booking { get; set; }
-        ICustomerRepo Customer { get; set; }
-        IItemRepo Item { get; set; }
+        IMenuTableRepo Menu {get; }
+        IOrderRepo Order {get; }
+        IFoodRepo Food {get;}
+        IEmployeeListRepo EmpList {get; }
+        IEmployeeRepo Employee {get;}
+        IBookingRepo Booking { get;  }
+        ICustomerRepo Customer { get;  }
+        IItemRepo Item { get; }
 
         Task SaveAsync();
->>>>>>> Stashed changes
+
     }
 }

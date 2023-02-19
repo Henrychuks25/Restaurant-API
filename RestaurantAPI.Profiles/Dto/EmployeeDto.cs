@@ -21,4 +21,28 @@ namespace RestaurantAPI.Profiles.Dto
 
       
     }
+
+    public class CreateEmployeeDto
+    {
+        public Guid EId { get; set; }
+        public Guid JId { get; set; }
+        public string EName { get; set; } = null!;
+        public string EPhone { get; set; } = null!;
+        public string EAddress { get; set; } = null!;
+        public decimal? ESalary { get; set; }
+
+
+    }
+
+    public class UpdateEmployeeDto
+    {
+        public Guid EId { get; set; }
+        public Guid JId { get; set; }
+        public string EName { get; set; } = null!;
+        public string EPhone { get; set; } = null!;
+        public string EAddress { get; set; } = null!;
+        public decimal? ESalary { get; set; }
+
+
+    }
 }
