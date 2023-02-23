@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RestaurantAPI.Entities.Contexts;
 using RestaurantAPI.Profiles;
 using RestaurantAPI.Repository.Interface;
@@ -25,5 +26,12 @@ namespace RestaurantAPI.Extensions
         public static void ConfigureAutoMapper(this IServiceCollection services) =>
            
             services.AddAutoMapper(typeof(MappingProfile));
+
+        public static void ConfigureApiVersionServices(this IServiceCollection services) =>
+            services.AddApiVersioning(options =>
+            {
+                options.AssumeDefaultVersionWhenUnspecified = true;
+                options.DefaultApiVersion = new ApiVersion(1, 0);
+            });
     }
 }

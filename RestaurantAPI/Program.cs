@@ -11,6 +11,7 @@ builder.Services.ConfigureCors();
 builder.Services.ConfigureIISintegration();
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureAutoMapper();
+builder.Services.ConfigureApiVersionServices();
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -19,6 +20,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IFoodRepo, FoodService>();
 builder.Services.AddScoped<IEmployeeRepo, EmployeeService>();
 builder.Services.AddScoped<IJobRepo, JobService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
