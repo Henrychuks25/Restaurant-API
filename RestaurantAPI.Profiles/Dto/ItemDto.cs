@@ -9,11 +9,11 @@ namespace RestaurantAPI.Profiles.Dto
     public class ItemDto
     {
         public int Quantity { get; set; }
-        public Guid OId { get; set; }
-        public Guid FId { get; set; }
+        public Guid OrderId { get; set; }
+        public Guid FoodId { get; set; }
         public string? ImageUrl { get; set; }
-        public string? FIdNavigation { get; set; }
-        public string? OIdNavigation { get; set; }
+        public string? FoodIdNavigation { get; set; }
+        public string? OrderIdNavigation { get; set; }
 
   
     }

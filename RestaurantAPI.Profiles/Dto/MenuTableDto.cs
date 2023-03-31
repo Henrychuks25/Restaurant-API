@@ -8,13 +8,13 @@ namespace RestaurantAPI.Profiles.Dto
 {
     public class MenuTableDto
     {
-         public Guid TId { get; set; }
+         public Guid Id { get; set; }
         public int Capacity { get; set; }
-        public Guid EId { get; set; }
+        public Guid EmployeeId { get; set; }
 
-        public string? EIdNavigation { get; set; } = null!; 
+        public string? EmployeeIdNavigation { get; set; } = null!; 
         public string? Bookings { get; set; } = null!; 
-        public string? OIds { get; set; } = null!; 
+        public string? OrderIds { get; set; } = null!; 
 
   
     }

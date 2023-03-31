@@ -8,7 +8,7 @@ namespace RestaurantAPI.Profiles.Dto
 {
     public class SellDetailDto
     {
-         public DateTime? SDate { get; set; }
+         public DateTime? Date { get; set; }
         public decimal? Total { get; set; }
     }
 }

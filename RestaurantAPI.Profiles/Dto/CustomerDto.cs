@@ -8,11 +8,11 @@ namespace RestaurantAPI.Profiles.Dto
 {
     public class CustomerDto
     {
-        public Guid CId { get; set; }
-        public string? CName { get; set; }
-        public string? CPhone { get; set; }
-        public string? CAddress { get; set; }
-        public string? COccupation { get; set; }
+        public Guid Id { get; set; }
+        public string? Name { get; set; }
+        public string? Phone { get; set; }
+        public string? Address { get; set; }
+        public string? Occupation { get; set; }
         public string? BookingName {get; set;}
         public string? Orders {get; set;}
 

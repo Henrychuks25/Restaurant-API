@@ -8,13 +8,13 @@ namespace RestaurantAPI.Profiles.Dto
 {
     public class EmployeeDto
     {
-        public Guid EId { get; set; }
-        public string EName { get; set; } = null!;
-        public string EPhone { get; set; } = null!;
-        public string EAddress { get; set; } = null!;
-        public decimal? ESalary { get; set; }
-        public Guid JId { get; set; }
-        public string JIdNavigation { get; set; } = null!;
+        public Guid Id { get; set; }
+        public string Name { get; set; } = null!;
+        public string Phone { get; set; } = null!;
+        public string Address { get; set; } = null!;
+        public decimal? Salary { get; set; }
+        public Guid JobId { get; set; }
+        public string JobIdNavigation { get; set; } = null!;
         public string Foods { get; set; } = null!;
         public string MenuTables { get; set; } = null!;
         public string Orders { get; set; } = null!;
@@ -24,11 +24,11 @@ namespace RestaurantAPI.Profiles.Dto
 
     public class CreateEmployeeDto
     {
-        public Guid EId { get; set; }
-        public Guid JId { get; set; }
-        public string EName { get; set; } = null!;
-        public string EPhone { get; set; } = null!;
-        public string EAddress { get; set; } = null!;
+        public Guid Id { get; set; }
+        public Guid JobId { get; set; }
+        public string Name { get; set; } = null!;
+        public string Phone { get; set; } = null!;
+        public string Address { get; set; } = null!;
         public decimal? ESalary { get; set; }
 
 
@@ -36,12 +36,12 @@ namespace RestaurantAPI.Profiles.Dto
 
     public class UpdateEmployeeDto
     {
-        public Guid EId { get; set; }
-        public Guid JId { get; set; }
-        public string EName { get; set; } = null!;
-        public string EPhone { get; set; } = null!;
-        public string EAddress { get; set; } = null!;
-        public decimal? ESalary { get; set; }
+        public Guid Id { get; set; }
+        public Guid JobId { get; set; }
+        public string Name { get; set; } = null!;
+        public string Phone { get; set; } = null!;
+        public string Address { get; set; } = null!;
+        public decimal? Salary { get; set; }
 
 
     }

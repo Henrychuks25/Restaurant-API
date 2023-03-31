@@ -31,6 +31,19 @@ namespace RestaurantAPI.Controllers
             return result;
         }
 
+        [HttpGet(Name = "GetAllEmployees")]
+        public async Task<EmployeeDto> GetEmployeeByNameAsync(string name,bool trackAllChanges)
+        {
+
+            var result = await _employeeRepo.GetEmployeeByNameAsync(name,trackAllChanges);
+            if (result == null)
+            {
+                return null;
+            }
+
+            return result;
+        }
+
         [HttpPost(Name = "CreateEmployee")]
         public async  Task<IActionResult> Post(CreateEmployeeDto createEmployee)
         {

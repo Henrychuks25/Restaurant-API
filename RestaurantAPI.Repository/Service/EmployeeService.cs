@@ -18,6 +18,20 @@ namespace RestaurantAPI.Repository.Service
             _contexts = contexts;
             _mapper = mapper;
         }
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                // dispose resources when needed
+            }
+        }
+
 
         public async Task Create(CreateEmployeeDto employee)
         {
@@ -57,7 +71,7 @@ namespace RestaurantAPI.Repository.Service
             return fResult;
         }
 
-        public async Task<EmployeeDto> GetFoodByNameAsync(string name, bool trackChanges)
+        public async Task<EmployeeDto> GetEmployeeByNameAsync(string name, bool trackChanges)
         {
             var result = await FindByCondition(f => f.EName.Equals(name), trackChanges).OrderBy(f => f.EName).FirstOrDefaultAsync();
             if (result == null)
@@ -68,9 +82,35 @@ namespace RestaurantAPI.Repository.Service
             return fResult;
         }
 
-        public Task Update(UpdateEmployeeDto employee)
+        public async Task<EmployeeDto> Update(UpdateEmployeeDto employee)
         {
-            throw new NotImplementedException();
+            //update a registered user
+
+         
+               
+                    EmployeeDto result = null;
+
+
+                    var Result = await _contexts.Employees.FirstOrDefaultAsync(c => c.EId == employee.Id);
+
+
+
+                    if (Result == null)
+                    {
+
+                        throw new ArgumentNullException(nameof(Result));
+                    }
+                    var val = _mapper.Map(employee, Result);
+                    _contexts.Entry(val).State = EntityState.Modified;
+                    _contexts.Employees.Update(val);
+                    await _contexts.SaveChangesAsync();                    
+                    result = _mapper.Map<EmployeeDto>(val);
+
+                    return result;
+
+
+              
+            
         }
     }
  

@@ -8,15 +8,15 @@ namespace RestaurantAPI.Profiles.Dto
 {
     public class OrderDto
     {
-          public Guid OId { get; set; }
-        public string? OType { get; set; }
-        public DateTime? ODate { get; set; }
-        public Guid? CId { get; set; }
-        public Guid? EId { get; set; }
-        public string? CIdNavigation { get; set; }
-        public string? EIdNavigation { get; set; }
+          public Guid Id { get; set; }
+        public string? Type { get; set; }
+        public DateTime? Date { get; set; }
+        public Guid? CustomerId { get; set; }
+        public Guid? EmployeeId { get; set; }
+        public string? CustomerIdNavigation { get; set; }
+        public string? EmployeeIdNavigation { get; set; }
         public string? Items { get; set; }
-        public string? TIds { get; set; }
+        public string? TableIds { get; set; }
 
     }
 }

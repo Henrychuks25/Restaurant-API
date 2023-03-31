@@ -8,8 +8,8 @@ namespace RestaurantAPI.Profiles.Dto
 {
     public class BookingDto
     {
-          public DateTime BDate { get; set; }
-        public TimeSpan BHour { get; set; }
+          public DateTime BookingDate { get; set; }
+        public TimeSpan BookingHour { get; set; }
         public Guid CustomerId { get; set; }
         public Guid MenuTableId { get; set; }
         public string CustomerName {get; set;}
