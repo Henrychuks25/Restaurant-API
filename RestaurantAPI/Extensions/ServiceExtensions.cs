@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using RestaurantAPI.Entities.Contexts;
+using RestaurantAPI.Entities.ModelContexts;
 using RestaurantAPI.Profiles;
 using RestaurantAPI.Repository.Interface;
 using RestaurantAPI.Repository.Service;

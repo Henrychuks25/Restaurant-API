@@ -5,8 +5,8 @@ namespace RestaurantAPI.Entities.Models
 {
     public partial class Booking
     {
-        public DateTime? BDate { get; set; }
-        public TimeSpan? BHour { get; set; }
+        public DateTime? Date { get; set; }
+        public TimeSpan? Hour { get; set; }
         public Guid CustomerId { get; set; }
         public Guid MenuTableId { get; set; }
 

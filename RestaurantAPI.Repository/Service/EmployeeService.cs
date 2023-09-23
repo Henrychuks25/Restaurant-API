@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using RestaurantAPI.Entities.Contexts;
+using RestaurantAPI.Entities.ModelContexts;
 using RestaurantAPI.Entities.Models;
 using RestaurantAPI.Profiles.Dto;
 using RestaurantAPI.Repository.Interface;
@@ -51,7 +51,10 @@ namespace RestaurantAPI.Repository.Service
 
         public async Task<IEnumerable<EmployeeDto>> GetAllEmployeesAsync(bool trackChanges)
         {
-            var result = await FindAll(trackChanges).OrderBy(f => f.EName).ToListAsync();
+            var result = await FindAll(trackChanges).Include(e=>e.MenuTables)
+                .Include(e => e.Foods)
+                .Include(e => e.Orders)
+                .OrderBy(f => f.Name).ToListAsync();
             if (result.Count == 0)
             {
                 return Enumerable.Empty<EmployeeDto>();
@@ -62,7 +65,7 @@ namespace RestaurantAPI.Repository.Service
 
         public async Task<EmployeeDto> GetEmployeeAsync(Guid employeeId, bool trackChanges)
         {
-            var result = await FindByCondition(f => f.EId.Equals(employeeId), trackChanges).OrderBy(f => f.EName).FirstOrDefaultAsync();
+            var result = await FindByCondition(f => f.Id.Equals(employeeId), trackChanges).OrderBy(f => f.Name).FirstOrDefaultAsync();
             if (result == null)
             {
                 throw new ArgumentNullException();
@@ -73,7 +76,7 @@ namespace RestaurantAPI.Repository.Service
 
         public async Task<EmployeeDto> GetEmployeeByNameAsync(string name, bool trackChanges)
         {
-            var result = await FindByCondition(f => f.EName.Equals(name), trackChanges).OrderBy(f => f.EName).FirstOrDefaultAsync();
+            var result = await FindByCondition(f => f.Id.Equals(name), trackChanges).OrderBy(f => f.Name).FirstOrDefaultAsync();
             if (result == null)
             {
                 throw new ArgumentNullException();
@@ -91,7 +94,7 @@ namespace RestaurantAPI.Repository.Service
                     EmployeeDto result = null;
 
 
-                    var Result = await _contexts.Employees.FirstOrDefaultAsync(c => c.EId == employee.Id);
+                    var Result = await _contexts.Employees.FirstOrDefaultAsync(c => c.Id == employee.Id);
 
 
 

@@ -5,7 +5,7 @@ using RestaurantAPI.Repository.Interface;
 namespace RestaurantAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/foods")]
     public class FoodController : ControllerBase
     {
         
@@ -18,19 +18,30 @@ namespace RestaurantAPI.Controllers
             _foodRepo = foodRepo;
         }
 
-        [HttpGet(Name = "GetAllFood")]
-        public async Task<IEnumerable<FoodDto>> Get(bool trackAllChanges)
+        [HttpGet("", Name = "GetAllFood")]
+        public async Task<IActionResult> Get(bool trackAllChanges)
         {
 
           var result = await _foodRepo.GetAllFoodAsync(trackAllChanges);
             if(result == null)
             {
-                return (IEnumerable<FoodDto>)NotFound();
+                return NotFound();
             }
 
-            return result;
+            return Ok(result);
         }
+        [HttpGet("{id}", Name = "GetById")]
+        public async Task<IActionResult> GetById(Guid id, bool trackAllChanges)
+        {
 
+            var result = await _foodRepo.GetFoodAsync(id, trackAllChanges);
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
+        }
         [HttpPost(Name = "CreateFood")]
         public async  Task<IActionResult> Post(CreateFoodDto createFood)
         {

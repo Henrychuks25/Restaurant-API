@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using RestaurantAPI.Entities.Models;
 
-namespace RestaurantAPI.Entities.Contexts
+namespace RestaurantAPI.Entities.ModelContexts
 {
     public partial class Contexts : DbContext
     {
@@ -62,15 +62,15 @@ namespace RestaurantAPI.Entities.Contexts
 
                 entity.ToTable("Booking");
 
-                entity.Property(e => e.CustomerId).HasColumnName("Customer_id");
+                entity.Property(e => e.CustomerId).HasColumnName("CustomerId");
 
-                entity.Property(e => e.MenuTableId).HasColumnName("Menu_Table_id");
+                entity.Property(e => e.MenuTableId).HasColumnName("MenuTableId");
 
-                entity.Property(e => e.BDate)
+                entity.Property(e => e.Date)
                     .HasColumnType("date")
-                    .HasColumnName("B_Date");
+                    .HasColumnName("Date");
 
-                entity.Property(e => e.BHour).HasColumnName("B_Hour");
+                entity.Property(e => e.Hour).HasColumnName("Hour");
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Bookings)
@@ -87,28 +87,28 @@ namespace RestaurantAPI.Entities.Contexts
 
             modelBuilder.Entity<Customer>(entity =>
             {
-                entity.HasKey(e => e.CId)
+                entity.HasKey(e => e.Id)
                     .HasName("customers_c_id_pk");
 
-                entity.Property(e => e.CId)
+                entity.Property(e => e.Id)
                     .ValueGeneratedNever()
-                    .HasColumnName("c_id");
+                    .HasColumnName("Id");
 
-                entity.Property(e => e.CAddress)
+                entity.Property(e => e.Address)
                     .HasMaxLength(25)
-                    .HasColumnName("c_address");
+                    .HasColumnName("Address");
 
-                entity.Property(e => e.CName)
+                entity.Property(e => e.Name)
                     .HasMaxLength(25)
-                    .HasColumnName("c_name");
+                    .HasColumnName("Name");
 
-                entity.Property(e => e.COccupation)
+                entity.Property(e => e.Occupation)
                     .HasMaxLength(10)
-                    .HasColumnName("c_occupation");
+                    .HasColumnName("Occupation");
 
-                entity.Property(e => e.CPhone)
+                entity.Property(e => e.Phone)
                     .HasMaxLength(11)
-                    .HasColumnName("c_phone");
+                    .HasColumnName("Phone");
             });
 
             modelBuilder.Entity<EmpList>(entity =>
@@ -135,88 +135,88 @@ namespace RestaurantAPI.Entities.Contexts
 
             modelBuilder.Entity<Employee>(entity =>
             {
-                entity.HasKey(e => e.EId)
+                entity.HasKey(e => e.Id)
                     .HasName("employees_e_id_pk");
 
-                entity.Property(e => e.EId)
+                entity.Property(e => e.Id)
                     .ValueGeneratedNever()
-                    .HasColumnName("e_id");
+                    .HasColumnName("Id");
 
-                entity.Property(e => e.EAddress)
+                entity.Property(e => e.Address)
                     .HasMaxLength(25)
-                    .HasColumnName("e_address");
+                    .HasColumnName("Address");
 
-                entity.Property(e => e.EName)
+                entity.Property(e => e.Name)
                     .HasMaxLength(20)
-                    .HasColumnName("e_name");
+                    .HasColumnName("Name");
 
-                entity.Property(e => e.EPhone)
+                entity.Property(e => e.Phone)
                     .HasMaxLength(11)
                     .IsUnicode(false)
-                    .HasColumnName("e_phone");
+                    .HasColumnName("Phone");
 
-                entity.Property(e => e.ESalary)
+                entity.Property(e => e.Salary)
                     .HasColumnType("decimal(6, 2)")
-                    .HasColumnName("e_salary");
+                    .HasColumnName("Salary");
 
-                entity.Property(e => e.JId).HasColumnName("j_id");
+                entity.Property(e => e.JobId).HasColumnName("JobId");
 
-                entity.HasOne(d => d.JIdNavigation)
+                entity.HasOne(d => d.Job)
                     .WithMany(p => p.Employees)
-                    .HasForeignKey(d => d.JId)
+                    .HasForeignKey(d => d.JobId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("employees_j_id_fk");
             });
 
             modelBuilder.Entity<Food>(entity =>
             {
-                entity.HasKey(e => e.FId)
+                entity.HasKey(e => e.Id)
                     .HasName("foods_f_id_pk");
 
-                entity.HasIndex(e => e.FName, "UQ__foods__83C8D6387DD47217")
+                entity.HasIndex(e => e.Name, "UQ__foods__83C8D6387DD47217")
                     .IsUnique();
 
-                entity.Property(e => e.FId)
+                entity.Property(e => e.Id)
                     .ValueGeneratedNever()
-                    .HasColumnName("f_id");
+                    .HasColumnName("Id");
 
-                entity.Property(e => e.EId).HasColumnName("e_id");
+                entity.Property(e => e.EmployeeId).HasColumnName("EmployeeId");
 
-                entity.Property(e => e.FName)
+                entity.Property(e => e.Name)
                     .HasMaxLength(10)
-                    .HasColumnName("f_name");
+                    .HasColumnName("Name");
 
-                entity.Property(e => e.FPrice)
+                entity.Property(e => e.Price)
                     .HasColumnType("decimal(5, 2)")
-                    .HasColumnName("f_price");
+                    .HasColumnName("Price");
 
-                entity.HasOne(d => d.EIdNavigation)
+                entity.HasOne(d => d.Employees)
                     .WithMany(p => p.Foods)
-                    .HasForeignKey(d => d.EId)
+                    .HasForeignKey(d => d.EmployeeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("foods_e_id_fk");
             });
 
             modelBuilder.Entity<Item>(entity =>
             {
-                entity.HasKey(e => new { e.OId, e.FId })
+                entity.HasKey(e => new { e.OrderId, e.FoodId })
                     .HasName("items_oid_fid_pk");
 
-                entity.Property(e => e.OId).HasColumnName("o_id");
+                entity.Property(e => e.OrderId).HasColumnName("OrderId");
 
-                entity.Property(e => e.FId).HasColumnName("f_id");
+                entity.Property(e => e.FoodId).HasColumnName("FoodId");
 
-                entity.Property(e => e.Quantity).HasColumnName("quantity");
+                entity.Property(e => e.Quantity).HasColumnName("Quantity");
 
-                entity.HasOne(d => d.FIdNavigation)
+                entity.HasOne(d => d.Foods)
                     .WithMany(p => p.Items)
-                    .HasForeignKey(d => d.FId)
+                    .HasForeignKey(d => d.FoodId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("items_fid_fk");
 
-                entity.HasOne(d => d.OIdNavigation)
+                entity.HasOne(d => d.Orders)
                     .WithMany(p => p.Items)
-                    .HasForeignKey(d => d.OId)
+                    .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("items_oid_fk");
             });
@@ -225,36 +225,36 @@ namespace RestaurantAPI.Entities.Contexts
             {
                 entity.Property(e => e.Id)
                     .ValueGeneratedNever()
-                    .HasColumnName("id");
+                    .HasColumnName("Id");
 
                 entity.Property(e => e.Title)
                     .HasMaxLength(50)
-                    .HasColumnName("title");
+                    .HasColumnName("Title");
             });
 
             modelBuilder.Entity<MenuTable>(entity =>
             {
-                entity.HasKey(e => e.TId)
+                entity.HasKey(e => e.Id)
                     .HasName("tables_t_id_pk");
 
                 entity.ToTable("Menu_tables");
 
-                entity.Property(e => e.TId)
+                entity.Property(e => e.Id)
                     .ValueGeneratedNever()
-                    .HasColumnName("t_id");
+                    .HasColumnName("Id");
 
-                entity.Property(e => e.Capacity).HasColumnName("capacity");
+                entity.Property(e => e.Capacity).HasColumnName("Capacity");
 
-                entity.Property(e => e.EId).HasColumnName("e_id");
+                entity.Property(e => e.EmployeeId).HasColumnName("EmployeeId");
 
-                entity.HasOne(d => d.EIdNavigation)
+                entity.HasOne(d => d.Employee)
                     .WithMany(p => p.MenuTables)
-                    .HasForeignKey(d => d.EId)
+                    .HasForeignKey(d => d.EmployeeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("tables_e_id_fk");
 
-                entity.HasMany(d => d.OIds)
-                    .WithMany(p => p.TIds)
+                entity.HasMany(d => d.Orders)
+                    .WithMany(p => p.MenuTables)
                     .UsingEntity<Dictionary<string, object>>(
                         "OrderHistory",
                         l => l.HasOne<Order>().WithMany().HasForeignKey("OId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("order_history_oid_fk"),
@@ -273,33 +273,33 @@ namespace RestaurantAPI.Entities.Contexts
 
             modelBuilder.Entity<Order>(entity =>
             {
-                entity.HasKey(e => e.OId)
+                entity.HasKey(e => e.Id)
                     .HasName("orders_o_id_pk");
 
-                entity.Property(e => e.OId)
+                entity.Property(e => e.Id)
                     .ValueGeneratedNever()
-                    .HasColumnName("o_id");
+                    .HasColumnName("Id");
 
-                entity.Property(e => e.CId).HasColumnName("c_id");
+                entity.Property(e => e.CustomerId).HasColumnName("CustomerId");
 
-                entity.Property(e => e.EId).HasColumnName("e_id");
+                entity.Property(e => e.EmployeeId).HasColumnName("EmployeeId");
 
-                entity.Property(e => e.ODate)
+                entity.Property(e => e.Date)
                     .HasColumnType("datetime")
-                    .HasColumnName("o_date");
+                    .HasColumnName("Date");
 
-                entity.Property(e => e.OType)
+                entity.Property(e => e.Type)
                     .HasMaxLength(10)
-                    .HasColumnName("o_type");
+                    .HasColumnName("Type");
 
-                entity.HasOne(d => d.CIdNavigation)
+                entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.CId)
+                    .HasForeignKey(d => d.CustomerId)
                     .HasConstraintName("orders_cid_fk");
 
-                entity.HasOne(d => d.EIdNavigation)
+                entity.HasOne(d => d.Employee)
                     .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.EId)
+                    .HasForeignKey(d => d.EmployeeId)
                     .HasConstraintName("orders_eid_fk");
             });
 

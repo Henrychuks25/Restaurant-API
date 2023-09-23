@@ -10,12 +10,12 @@ namespace RestaurantAPI.Entities.Models
             Items = new HashSet<Item>();
         }
 
-        public Guid FId { get; set; }
-        public string? FName { get; set; }
-        public decimal FPrice { get; set; }
-        public Guid EId { get; set; }
+        public Guid Id { get; set; }
+        public string? Name { get; set; }
+        public decimal Price { get; set; }
+        public Guid EmployeeId { get; set; }
 
-        public virtual Employee EIdNavigation { get; set; } = null!;
+        public virtual Employee Employees { get; set; } = null!;
         public virtual ICollection<Item> Items { get; set; }
     }
 }

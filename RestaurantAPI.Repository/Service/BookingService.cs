@@ -1,4 +1,4 @@
-﻿using RestaurantAPI.Entities.Contexts;
+﻿using RestaurantAPI.Entities.ModelContexts;
 using RestaurantAPI.Entities.Models;
 using System;
 using System.Collections.Generic;

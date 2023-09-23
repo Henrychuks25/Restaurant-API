@@ -4,8 +4,8 @@ using RestaurantAPI.Repository.Interface;
 
 namespace RestaurantAPI.Controllers
 {
+    [Route("api/employees")]
     [ApiController]
-    [Route("[controller]")]
     public class EmployeeController : ControllerBase
     {
         
@@ -18,30 +18,30 @@ namespace RestaurantAPI.Controllers
             _employeeRepo = employeeRepo;
         }
 
-        [HttpGet(Name = "GetAllEmployees")]
-        public async Task<IEnumerable<EmployeeDto>> Get(bool trackAllChanges)
+        [HttpGet("", Name = "GetAllEmployees")]
+        public async Task<IActionResult> Get(bool trackAllChanges)
         {
 
           var result = await _employeeRepo.GetAllEmployeesAsync(trackAllChanges);
             if(result == null)
             {
-                return (IEnumerable<EmployeeDto>)NotFound();
+                return NotFound();
             }
 
-            return result;
+            return Ok(result);
         }
 
-        [HttpGet(Name = "GetAllEmployees")]
-        public async Task<EmployeeDto> GetEmployeeByNameAsync(string name,bool trackAllChanges)
+        [HttpGet("by_name", Name = "GetEmployeeByNameAsync")]
+        public async Task<IActionResult> GetEmployeeByNameAsync(string name,bool trackAllChanges)
         {
 
             var result = await _employeeRepo.GetEmployeeByNameAsync(name,trackAllChanges);
             if (result == null)
             {
-                return null;
+                return NotFound();
             }
 
-            return result;
+            return Ok(result);
         }
 
         [HttpPost(Name = "CreateEmployee")]

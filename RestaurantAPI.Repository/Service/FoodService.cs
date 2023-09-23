@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using RestaurantAPI.Entities.Contexts;
+using RestaurantAPI.Entities.ModelContexts;
 using RestaurantAPI.Entities.Models;
 using RestaurantAPI.Profiles.Dto;
 using RestaurantAPI.Repository.Interface;
@@ -43,7 +43,7 @@ namespace RestaurantAPI.Repository.Service
 
         public async Task<IEnumerable<FoodDto>> GetAllFoodAsync(bool trackChanges)
         {
-           var result = await FindAll(trackChanges).OrderBy(f=>f.FName).ToListAsync();
+           var result = await FindAll(trackChanges).OrderBy(f=>f.Name).ToListAsync();
             if(result.Count == 0)
             {
                 return Enumerable.Empty<FoodDto>();
@@ -54,7 +54,7 @@ namespace RestaurantAPI.Repository.Service
 
         public async Task<FoodDto> GetFoodAsync(Guid foodId, bool trackChanges)
         {
-            var result = await FindByCondition(f => f.FId.Equals(foodId), trackChanges).OrderBy(f => f.FName).FirstOrDefaultAsync();
+            var result = await FindByCondition(f => f.Id.Equals(foodId), trackChanges).OrderBy(f => f.Name).FirstOrDefaultAsync();
             if(result == null)
             {
                 throw new ArgumentNullException();
@@ -65,7 +65,7 @@ namespace RestaurantAPI.Repository.Service
 
         public async Task<FoodDto> GetFoodByNameAsync(string name, bool trackChanges)
         {
-            var result = await FindByCondition(f => f.FName.Equals(name), trackChanges).OrderBy(f => f.FName).FirstOrDefaultAsync();
+            var result = await FindByCondition(f => f.Id.Equals(name), trackChanges).OrderBy(f => f.Name).FirstOrDefaultAsync();
             if (result == null)
             {
                 throw new ArgumentNullException();
@@ -76,7 +76,7 @@ namespace RestaurantAPI.Repository.Service
 
         public async Task Update(UpdateFoodDto food)
         {
-          var chkFoodExist =  await GetFoodAsync(food.FId, true);
+          var chkFoodExist =  await GetFoodAsync(food.Id, true);
             if (chkFoodExist != null)
             {
               await  Update(food);

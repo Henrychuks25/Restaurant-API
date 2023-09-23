@@ -12,14 +12,14 @@ namespace RestaurantAPI.Entities.Models
             Orders = new HashSet<Order>();
         }
 
-        public Guid EId { get; set; }
-        public string EName { get; set; } = null!;
-        public string EPhone { get; set; } = null!;
-        public string EAddress { get; set; } = null!;
-        public decimal? ESalary { get; set; }
-        public Guid JId { get; set; }
+        public Guid Id { get; set; }
+        public string Name { get; set; } = null!;
+        public string Phone { get; set; } = null!;
+        public string Address { get; set; } = null!;
+        public decimal? Salary { get; set; }
+        public Guid JobId { get; set; }
 
-        public virtual Job JIdNavigation { get; set; } = null!;
+        public virtual Job Job { get; set; } = null!;
         public virtual ICollection<Food> Foods { get; set; }
         public virtual ICollection<MenuTable> MenuTables { get; set; }
         public virtual ICollection<Order> Orders { get; set; }

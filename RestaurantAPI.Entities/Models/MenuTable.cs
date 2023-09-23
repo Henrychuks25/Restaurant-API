@@ -8,16 +8,16 @@ namespace RestaurantAPI.Entities.Models
         public MenuTable()
         {
             Bookings = new HashSet<Booking>();
-            OIds = new HashSet<Order>();
+            Orders = new HashSet<Order>();
         }
 
-        public Guid TId { get; set; }
+        public Guid Id { get; set; }
         public int Capacity { get; set; }
-        public Guid EId { get; set; }
+        public Guid EmployeeId { get; set; }
 
-        public virtual Employee EIdNavigation { get; set; } = null!;
+        public virtual Employee Employee { get; set; } = null!;
         public virtual ICollection<Booking> Bookings { get; set; }
 
-        public virtual ICollection<Order> OIds { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

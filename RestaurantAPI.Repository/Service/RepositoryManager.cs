@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using RestaurantAPI.Entities.Contexts;
+using RestaurantAPI.Entities.ModelContexts;
 using RestaurantAPI.Repository.Interface;
 using System;
 using System.Collections.Generic;
